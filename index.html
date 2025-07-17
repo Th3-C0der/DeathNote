@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Note Web</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="cursor.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="preload" href="DeathNote.ttf" as="font" type="font/ttf" crossorigin>
+</head>
+<body>
+    <div class="container">
+        <h1 class="death-title">DEATH NOTE WEB</h1>
+        <form id="death-form" autocomplete="off">
+            <div class="input-group">
+                <label for="name">Name of Victim</label>
+                <input type="text" id="name" name="name" required maxlength="50">
+            </div>
+            <div class="input-group">
+                <label for="cause">Cause of Death <span class="optional">(optional)</span> <span id="cause-timer"></span></label>
+                <input type="text" id="cause" name="cause" maxlength="100" disabled>
+            </div>
+            <div class="input-group" id="description-group" style="display: none;">
+                <label for="description">Death Description <span id="description-timer"></span></label>
+                <textarea id="description" name="description" maxlength="500"></textarea>
+            </div>
+            <div class="input-group">
+                <label for="death-time">Date and Time of Death <span class="optional">(optional)</span></label>
+                <input type="text" id="death-time" name="death-time" placeholder="Select Date and Time">
+            </div>
+            <button type="submit" id="write-btn">
+                Write Name
+                <div class="ink-drip"></div>
+            </button>
+        </form>
+
+        <section class="death-log-section">
+            <h2>Death Log</h2>
+            <div id="death-log" class="death-log"></div>
+        </section>
+
+        <section class="rules-section">
+            <button id="toggle-rules" aria-expanded="false">Show Death Note Rules</button>
+            <div id="rules-content" class="rules-content" hidden>
+                <ul>
+                    <li>The human whose name is written in this note shall die.</li>
+                    <li>This note will not take effect unless the writer has the person's face in their mind when writing his/her name.</li>
+                    <li>If the cause of death is not specified, the person will simply die of a heart attack 40 seconds after their name is written.</li>
+                    <li>If the cause of death is written within 40 seconds of the victim's name, that cause will be enacted.</li>
+                    <li>Once the cause of death is written, the user has 6 minutes and 40 seconds (400 seconds) to detail the circumstances of the death.</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="extra-features">
+            <button id="shinigami-eye-btn">Shinigami Eye</button>
+            <div id="shinigami-eye-container"></div>
+            <button id="reset-btn">Burn Notebook</button>
+        </div>
+    </div>
+
+    <div id="ryuk-message" class="ryuk-message" hidden>
+        <p>Heh heh... Humans are so interesting.</p>
+    </div>
+
+    <audio id="death-chime" src="DeathNote.mp3" preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="script.js"></script>
+</body>
+</html>
